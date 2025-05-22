@@ -1,0 +1,27 @@
+@if (showNewTaskForm) {
+    <app-new-task (closeNewTask)="onCloseNewTask()" (newTaskAdded)="onAddTask($event)"></app-new-task>
+}   
+@else {
+    <section id="tasks">
+        <header>
+            <h2>{{name}}'s Tasks</h2>
+            <menu>
+                <button (click)="onStartAddingTask()">Add Task</button>
+            </menu>
+        </header>
+        <ul>
+            @for (task of userTasks; track task.id) {
+                <li>
+                    <app-task [task]="task" (complete)="onCompleteTask($event)" >
+                        <h2>{{task.title}}</h2>
+                        <time>{{task.dueDate}}</time>
+                        <p>{{task.summary}}</p>
+                        <p class="actions">
+
+                    </app-task>
+                </li>
+            }
+        </ul>
+    </section>
+}
+
