@@ -30,21 +30,15 @@ export class TasksComponent {
 
   onCompleteTask(taskId: string) {
     console.log('Task completed:', taskId);
-    // Implement the logic to mark the task as completed
-    // For example, you can filter out the completed task from the tasks array
-    this.dummyTasks = this.dummyTasks.filter((task) => task.id !== taskId);
+    // Implement the logic to mark the task as completed;
+    this.tasksService.removeTask(taskId);
   }
 
   onAddTask(taskData: NewTaskData) {
     console.log('Add task clicked');
     // Implement the logic to add a new task
-    this.dummyTasks.push({
-      id: new Date().getTime().toString(),
-      userId: this.userId,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date,
-    });
+    this.tasksService.addTask(taskData, this.userId);
+
     this.showNewTaskForm = false;
   }
 
