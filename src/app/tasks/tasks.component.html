@@ -1,5 +1,6 @@
 @if (showNewTaskForm) {
-    <app-new-task (closeNewTask)="onCloseNewTask()" (newTaskAdded)="onAddTask($event)"></app-new-task>
+    this.tasksService.addTask(taskData, this.userId);
+    <app-new-task (closeNewTask)="onCloseNewTask()"  [userId]="userId"></app-new-task>
 }   
 @else {
     <section id="tasks">
