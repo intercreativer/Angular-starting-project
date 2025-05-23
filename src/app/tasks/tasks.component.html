@@ -13,12 +13,11 @@
         <ul>
             @for (task of userTasks; track task.id) {
                 <li>
-                    <app-task [task]="task" (complete)="onCompleteTask($event)" >
+                    <app-task [task]="task" >
                         <h2>{{task.title}}</h2>
                         <time>{{task.dueDate}}</time>
                         <p>{{task.summary}}</p>
                         <p class="actions">
-
                     </app-task>
                 </li>
             }
